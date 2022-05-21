@@ -14,19 +14,23 @@ modules:
   - name: Find-Billy
     buildsystem: simple
     build-commands:
-      - install -D a54d453b-6a29-40fc-925b-4af1bc3b7200 /app/bin/godot-runner.pck
+      - install -D f005448c-b3dd-44be-b2c1-642afda4ab1d /app/bin/godot-runner.pck
       - install -D LICENSE.md /app/bin/LICENSE.md
-      - install -D brand/icon/64x64.png /app/share/icons/hicolor/64x64/apps/page.codeberg.papojari.Find_Billy.png
-      - install -D brand/icon/128x128.png /app/share/icons/hicolor/128x128/apps/page.codeberg.papojari.Find_Billy.png
-      - install -D brand/icon/144x144.png /app/share/icons/hicolor/144x144/apps/page.codeberg.papojari.Find_Billy.png
-      - install -D brand/icon/180x180.png /app/share/icons/hicolor/180x180/apps/page.codeberg.papojari.Find_Billy.png
-      - install -D brand/icon/512x512.png /app/share/icons/hicolor/512x512/apps/page.codeberg.papojari.Find_Billy.png
+      - mv 329a5bac-4993-4a3b-86a6-52c0454d50d4 icons.tar.gz
+      - tar xvf icons.tar.gz
+      - >
+        for icon_width in 128 192 512; do
+          install -D icons/usr/share/icons/hicolor/"$icon_width"x"$icon_width"/apps/find-billy.png /app/share/icons/hicolor/"$icon_width"x"$icon_width"/apps/page.codeberg.papojari.Find_Billy.png
+        done
       - install -D page.codeberg.papojari.Find_Billy.desktop /app/share/applications/page.codeberg.papojari.Find_Billy.desktop
       - install -D page.codeberg.papojari.Find_Billy.appdata.xml /app/share/metainfo/page.codeberg.papojari.Find_Billy.appdata.xml
     sources:
       - type: archive
-        url: https://codeberg.org/papojari/Find-Billy/archive/v0.35.0.tar.gz
-        sha256: 537e749c522fe3ee35cd967aae449c2063d7e400ebe8edb26841a8b2b4be7f03
+        url: https://codeberg.org/papojari/Find-Billy/archive/v0.37.0.tar.gz
+        sha256: 476610d90ca53c221e39bf062ea087cc72cb86184350b0cbb4204a35a93db51e
       - type: file
-        url: https://codeberg.org/attachments/a54d453b-6a29-40fc-925b-4af1bc3b7200
-        sha256: 8d51d4a10484f2305d57791cceacad8c032012c701d686e5cf9d1517b1d6789a
+        url: https://codeberg.org/attachments/f005448c-b3dd-44be-b2c1-642afda4ab1d
+        sha256: 2e1f5b0246c7ad1dc13e68297c0545ff53655c2d2b36d961167af442ed9fd607
+      - type: file
+        url: https://codeberg.org/attachments/329a5bac-4993-4a3b-86a6-52c0454d50d4
+        sha256: 622c3ccf1b07d64e56e73a4048d38a3616a53d1c648e2591742fc1b038b8b400
