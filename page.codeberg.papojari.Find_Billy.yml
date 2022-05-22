@@ -14,9 +14,9 @@ modules:
   - name: Find-Billy
     buildsystem: simple
     build-commands:
-      - install -D f005448c-b3dd-44be-b2c1-642afda4ab1d /app/bin/godot-runner.pck
+      - install -D d6be6648-359c-49a6-8fba-49c890ab8bf6 /app/bin/godot-runner.pck
       - install -D LICENSE.md /app/bin/LICENSE.md
-      - mv 329a5bac-4993-4a3b-86a6-52c0454d50d4 icons.tar.gz
+      - mv 94b09573-d8fe-466e-a9c3-23c2dde203ec icons.tar.gz
       - tar xvf icons.tar.gz
       - >
         for icon_width in 128 192 512; do
@@ -26,11 +26,11 @@ modules:
       - install -D page.codeberg.papojari.Find_Billy.appdata.xml /app/share/metainfo/page.codeberg.papojari.Find_Billy.appdata.xml
     sources:
       - type: archive
-        url: https://codeberg.org/papojari/Find-Billy/archive/v0.37.0.tar.gz
-        sha256: 476610d90ca53c221e39bf062ea087cc72cb86184350b0cbb4204a35a93db51e
+        url: https://codeberg.org/papojari/Find-Billy/archive/v0.37.2.tar.gz
+        sha256: 2d9e66ee261febf25cc4a56e36c5b2dc143d23456f09f758c59c7b4a46961803
       - type: file
-        url: https://codeberg.org/attachments/f005448c-b3dd-44be-b2c1-642afda4ab1d
-        sha256: 2e1f5b0246c7ad1dc13e68297c0545ff53655c2d2b36d961167af442ed9fd607
+        url: https://codeberg.org/attachments/d6be6648-359c-49a6-8fba-49c890ab8bf6
+        sha256: cc2915ca0a552ea1c68e95f4a13dc2705b8be47d8182d31bde9f9a767d290f88
       - type: file
-        url: https://codeberg.org/attachments/329a5bac-4993-4a3b-86a6-52c0454d50d4
-        sha256: 622c3ccf1b07d64e56e73a4048d38a3616a53d1c648e2591742fc1b038b8b400
+        url: https://codeberg.org/attachments/94b09573-d8fe-466e-a9c3-23c2dde203ec
+        sha256: 1df8832de0590f1ddf9463781bcaa1feebfc3432f1dca8b21059cd56a3552bad
