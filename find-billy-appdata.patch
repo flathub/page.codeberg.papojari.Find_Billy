@@ -1,0 +1,13 @@
+diff --git a/page.codeberg.papojari.Find_Billy.appdata.xml b/page.codeberg.papojari.Find_Billy.appdata.xml
+index cee6dd9..f14d5b0 100644
+--- a/page.codeberg.papojari.Find_Billy.appdata.xml
++++ b/page.codeberg.papojari.Find_Billy.appdata.xml
+@@ -20,7 +20,7 @@
+   <screenshots>
+     <screenshot type="default">
+       <caption>Dinonuggy surrounded by kitchen utensils</caption>
+-      <image type="thumbnail" width="2090" height="1333">https://codeberg.org/papojari/Find-Billy/raw/branch/main/thumbnail.png</image>
++      <image type="source">https://codeberg.org/papojari/Find-Billy/raw/tag/v0.37.2/thumbnail.png</image>
+     </screenshot>
+   </screenshots>
+   <releases>
