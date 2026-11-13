@@ -1,28 +1,28 @@
 app-id: page.codeberg.papojari.Find_Billy
 runtime: org.freedesktop.Platform
-runtime-version: '25.08'
-base: org.godotengine.godot.BaseApp
-base-version: '3.5-25.08'
+runtime-version: '26.08'
 sdk: org.freedesktop.Sdk
 command: godot-runner
+rename-icon: find-billy
 finish-args:
   - --share=ipc
   - --socket=x11
   - --socket=pulseaudio
   - --device=dri
 modules:
+  - godot-3.5.yaml
   - name: Find-Billy
     buildsystem: simple
+    license-files:
+      - LICENSE.md
     build-commands:
       - install -Dm644 godot-runner.pck -t /app/bin/
-      - install -D LICENSE.md /app/bin/LICENSE.md
+      - install -Dm644 page.codeberg.papojari.Find_Billy.desktop -t /app/share/applications/
+      - install -Dm644 page.codeberg.papojari.Find_Billy.appdata.xml -t /app/share/metainfo/
+      # Install the icons
       - tar xvf icons.tar.gz
-      - >
-        for icon_width in 128 192 512; do
-          install -D icons/usr/share/icons/hicolor/"$icon_width"x"$icon_width"/apps/find-billy.png /app/share/icons/hicolor/"$icon_width"x"$icon_width"/apps/page.codeberg.papojari.Find_Billy.png
-        done
-      - install -D page.codeberg.papojari.Find_Billy.desktop /app/share/applications/page.codeberg.papojari.Find_Billy.desktop
-      - install -D page.codeberg.papojari.Find_Billy.appdata.xml /app/share/metainfo/page.codeberg.papojari.Find_Billy.appdata.xml
+      - install -Dm644 icons/usr/share/icons/hicolor/128x128/apps/find-billy.png -t /app/share/icons/hicolor/128x128/apps/
+      - install -Dm644 icons/usr/share/icons/hicolor/512x512/apps/find-billy.png -t /app/share/icons/hicolor/512x512/apps/
     sources:
       - type: archive
         url: https://codeberg.org/papojari/Find-Billy/archive/v0.37.2.tar.gz
