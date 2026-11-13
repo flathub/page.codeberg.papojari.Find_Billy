@@ -1,0 +1,58 @@
+name: godot-runner
+buildsystem: simple
+build-options:
+  arch:
+    x86_64:
+      env:
+        # Only enable link-time optimization when targeting x86_64
+        # (causes issues on other architectures)
+        SCONS_FLAGS_EXTRA: use_lto=yes
+
+  env:
+    # Will be appended to the version string displayed in the command-line help
+    BUILD_NAME: flathub
+
+    # SCons flags common to all builds
+    # Shouldn't be quoted when used as it's a single string, not an array
+    SCONS_FLAGS: >
+      platform=x11
+      CCFLAGS=-I/app/include
+      prefix=/app
+      unix_global_settings_path=/app
+      progress=no
+      builtin_freetype=no
+      builtin_libogg=no
+      builtin_libpng=no
+      builtin_libtheora=no
+      builtin_libvorbis=no
+      builtin_libwebp=no
+      builtin_libvpx=no
+      builtin_zlib=no
+      udev=no
+
+build-commands:
+  - python3 /app/bin/scons $SCONS_FLAGS $SCONS_FLAGS_EXTRA tools=no target=release -j "$FLATPAK_BUILDER_N_JOBS"
+  - install -Dm755 bin/godot.x11.opt.* /app/bin/godot-runner
+
+sources:
+  - type: archive
+    url: https://github.com/godotengine/godot/releases/download/3.5.3-stable/godot-3.5.3-stable.tar.xz
+    sha256: 3cb48126b76858f40cf54bd345bb84dc1f49d9e6f8a4a7425ad86e805d39701d
+
+modules:
+  - name: glu
+    buildsystem: meson
+    sources:
+      - type: archive
+        url: https://archive.mesa3d.org/glu/glu-9.0.3.tar.xz
+        sha256: bd43fe12f374b1192eb15fe20e45ff456b9bc26ab57f0eee919f96ca0f8a330f
+
+  - name: scons
+    buildsystem: simple
+    build-commands:
+      - pip3 install --no-index --no-build-isolation --prefix=/app .
+    cleanup: ['*']
+    sources:
+      - type: archive
+        url: https://downloads.sourceforge.net/project/scons/scons/4.8.0/SCons-4.8.0.tar.gz
+        sha256: 6e928fc97984e719814270f6863f2183b3b72180b0162a5ed09db68c9994100c
